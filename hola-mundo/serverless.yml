@@ -12,6 +12,9 @@
 # Happy Coding!
 
 service: curso-sls-hola-mundo
+
+plugins:
+  - serverless-offline
 # app and org for use with dashboard.serverless.com
 #app: your-app-name
 #org: your-org-name
@@ -62,8 +65,14 @@ functions:
     handler: handler.hello
     events:
       - http:
-          path: hola-mundo
+          path: hola-mundo/{name}
           method: get
+  showUser:
+    handler: handler.showUser
+    events:
+      - http:
+          path: user
+          method: post          
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
